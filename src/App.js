@@ -23,7 +23,7 @@ function App() {
     [2, 2, 0, 2, 0, 0, 0, 0, 0, 2, 0, 2, 2, 0, 2, 2, 0, 0, 2, 0],
     [0, 0, 0, 2, 0, 2, 2, 2, 0, 2, 0, 0, 2, 0, 2, 0, 0, 2, 2, 0],
     [0, 2, 0, 2, 0, 2, 0, 2, 0, 0, 0, 2, 2, 0, 2, 2, 0, 0, 0, 0],
-    [0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0]
+    [0, 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0, 0, 2, 0, 0, 2, 0, 3]
   ];
   
   const [area, setArea] = useState(gameArea);
@@ -43,24 +43,28 @@ function App() {
   }, [area]) 
   
   const newArea = [...area];
-  
+
   function moveRight() {
-    if(newArea[x][y + 1] === 0) {
-      newArea[x][y] = 0;
-      newArea[x][y + 1] = 1;
-      setArea(newArea)
+    if(y < newArea[0].length - 1) {
+      if(newArea[x][y + 1] !== 2) {
+        newArea[x][y] = 0;
+        newArea[x][y + 1] = 1;
+        setArea(newArea)
+      }
     }
   }
   function moveLeft() {
-    if(newArea[x][y - 1] === 0) {
-      newArea[x][y] = 0;
-      newArea[x][y - 1] = 1;
-      setArea(newArea)
+    if(y > 0) {
+      if(newArea[x][y - 1] !== 2) {
+        newArea[x][y] = 0;
+        newArea[x][y - 1] = 1;
+        setArea(newArea)
+      }
     }
   }
   function moveUp() {
     if(x > 0) {
-      if(newArea[x - 1][y] === 0) {
+      if(newArea[x - 1][y] !== 2) {
         newArea[x][y] = 0;
         newArea[x - 1][y] = 1;
         setArea(newArea)
@@ -69,7 +73,7 @@ function App() {
   }
   function moveDown() {
     if(x < newArea.length - 1) {
-      if(newArea[x + 1][y] === 0) {
+      if(newArea[x + 1][y] !== 2) {
         newArea[x][y] = 0;
         newArea[x + 1][y] = 1;
         setArea(newArea)
@@ -105,6 +109,7 @@ function App() {
               return (<div key={i} className='column'>
                 {item === 1 && (<div key={i} className='player'></div>)} 
                 {item === 2 && (<div key={i} className='wall'></div>)} 
+                {item === 3 && (<div key={i} className='exit'>&#10026;</div>)} 
               </div>)
             })}
           </div>)

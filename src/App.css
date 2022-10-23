@@ -37,8 +37,8 @@
 .player {
   background-color: #32c5b9;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-  width: 15px;
-  height: 15px;
+  width: 75%;
+  height: 75%;
   border-radius: 50%;
 }
 
@@ -47,4 +47,8 @@
   height: 100%;
   background-color: #1e4f8a;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.exit {
+  color: #d8a822;
 }
