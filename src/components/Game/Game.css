@@ -1,20 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-#root {
-  background-color: #e8e8e8;
-}
-
-.wrapper {
-  max-width: 400px;
-  margin: 0 auto;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .area {
   margin: 10px auto;
   width: 100%;
@@ -51,4 +34,5 @@
 
 .exit {
   color: #d8a822;
+  font-size: 18px;
 }
